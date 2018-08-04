@@ -22,7 +22,7 @@ empty GitHub repo under your org using the GitHub GUI, for example
 https://github.com/samsung-cnct/cluster-api-provider-ssh.
 
 - [Duplicate](https://help.github.com/articles/duplicating-a-repository/)
-this repo (https://github.com/samsung-cnct/cluster-api-provider-skeleton) and
+this repo (https://github.com/davidewatson/cluster-api-provider-skeleton) and
 push it to the `cluster-api-provider-ssh` repo you created in the previous
 step. Note the arguments to clone and push.
 
@@ -32,6 +32,16 @@ cd cluster-api-provider-skeleton.git
 git push --mirror https://github.com/samsung-cnct/cluster-api-provider-ssh.git
 cd ..
 rm -rf cluster-api-provider-skeleton.git
+```
+
+- Clone the new repository.
+  For Go dependencies to be built correctly with dep, place this repository in your $GOPATH as follows:
+
+```
+mkdir -p $GOPATH/src/sigs.k8s.io/
+cd $GOPATH/src/sigs.k8s.io/
+git clone https://github.com/samsung-cnct/cluster-api-provider-ssh.git 
+cd cluster-api-provider-ssh
 ```
 
 - Customize the new repository. A simple search and replace may suffice for
@@ -50,3 +60,8 @@ git mv clusterctl/examples/skeleton/ clusterctl/examples/ssh/
 
 For other changes, like the README.md, OWNERS_ALIASES, etc., you'll have to
 think more.
+
+- Get all the dependencies in your vendor directory
+```
+make depend
+```
