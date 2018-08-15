@@ -48,7 +48,8 @@ cd cluster-api-provider-ssh
 some name changes, e.g. on OS X, something like this might work:
 
 ```
-find . -type f -path ./.git -prune -o -print -exec sed -i '' s/skeleton/ssh/ {} +
+find ./* -type f  -path ./vendor -prune -o -path ./.git -prune -o -exec sed -i '' -e 's/skeleton/ssh/g' {} \;
+find ./* -type f  -path ./vendor -prune -o -path ./.git -prune -o -exec sed -i '' -e 's/Skeleton/SSH/g' {} \;
 ```
 
 The following directories must be renamed/moved:
