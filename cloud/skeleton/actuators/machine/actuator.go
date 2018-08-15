@@ -71,6 +71,22 @@ func (a *Actuator) Update(cluster *clusterv1.Cluster, machine *clusterv1.Machine
 
 // Exists test for the existance of a machine and is invoked by the Machine Controller
 func (a *Actuator) Exists(cluster *clusterv1.Cluster, machine *clusterv1.Machine) (bool, error) {
-	glog.Info("Checking if machine %v for cluster %v exists.", machine.Name, cluster.Name)
+	glog.Infof("Checking if machine %v for cluster %v exists.", machine.Name, cluster.Name)
 	return false, fmt.Errorf("TODO: Not yet implemented")
+}
+
+// The Machine Actuator interface must implement GetIP and GetKubeConfig functions as a workaround for issues
+// cluster-api#158 (https://github.com/kubernetes-sigs/cluster-api/issues/158) and cluster-api#160
+// (https://github.com/kubernetes-sigs/cluster-api/issues/160).
+
+// GetIP returns IP address of the machine in the cluster.
+func (a *Actuator) GetIP(cluster *clusterv1.Cluster, machine *clusterv1.Machine) (string, error) {
+	glog.Infof("Getting IP of machine %v for cluster %v.", machine.Name, cluster.Name)
+	return "", fmt.Errorf("TODO: Not yet implemented")
+}
+
+// GetKubeConfig gets a kubeconfig from the master.
+func (a *Actuator) GetKubeConfig(cluster *clusterv1.Cluster, master *clusterv1.Machine) (string, error) {
+	glog.Infof("Getting IP of machine %v for cluster %v.", master.Name, cluster.Name)
+	return "", fmt.Errorf("TODO: Not yet implemented")
 }
