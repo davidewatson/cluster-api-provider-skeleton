@@ -27,9 +27,9 @@ push it to the `cluster-api-provider-ssh` repo you created in the previous
 step. Note the arguments to clone and push.
 
 ```
-git clone --bare https://github.com/samsung-cnct/cluster-api-provider-skeleton.git
+git clone --bare https://github.com/davidewatson/cluster-api-provider-skeleton.git
 cd cluster-api-provider-skeleton.git
-git push --mirror https://github.com/samsung-cnct/cluster-api-provider-ssh.git
+git push --mirror https://github.com/davidewatson/cluster-api-provider-ssh.git
 cd ..
 rm -rf cluster-api-provider-skeleton.git
 ```
@@ -40,7 +40,7 @@ rm -rf cluster-api-provider-skeleton.git
 ```
 mkdir -p $GOPATH/src/sigs.k8s.io/
 cd $GOPATH/src/sigs.k8s.io/
-git clone https://github.com/samsung-cnct/cluster-api-provider-ssh.git 
+git clone https://github.com/davidewatson/cluster-api-provider-ssh.git 
 cd cluster-api-provider-ssh
 ```
 
