@@ -20,7 +20,7 @@ depend:
 	dep version || go get -u github.com/golang/dep/cmd/dep
 	dep ensure
 
-depend-update: 
+depend-update:
 	dep ensure -update
 
 generate: gendeepcopy
@@ -33,16 +33,6 @@ gendeepcopy:
 	  -h boilerplate.go.txt
 
 build: depend
-	CGO_ENABLED=0 go install -a -ldflags '-extldflags "-static"' sigs.k8s.io/cluster-api-provider-skeleton/cmd/cluster-controller
-	CGO_ENABLED=0 go install -a -ldflags '-extldflags "-static"' sigs.k8s.io/cluster-api-provider-skeleton/cmd/machine-controller
-
-images: depend
-	$(MAKE) -C cmd/cluster-controller image
-	$(MAKE) -C cmd/machine-controller image
-
-push: depend
-	$(MAKE) -C cmd/cluster-controller push
-	$(MAKE) -C cmd/machine-controller push
 
 check: depend fmt vet
 
@@ -57,10 +47,7 @@ vet:
 
 compile:
 	mkdir -p ./bin
-	go build -o ./bin/cluster-controller ./cmd/cluster-controller
-	go build -o ./bin/machine-controller ./cmd/machine-controller
-	go build -o ./bin/clusterctl ./clusterctl
+	go build -o ./bin/manager ./cmd/manager
 
 clean:
 	rm -rf ./bin
-	

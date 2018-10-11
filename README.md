@@ -4,8 +4,7 @@ These instructions are intended to make it easier for developers to create new
 Cluster API provider repositories. For more information on the Cluster API project
 please see the base repository [here](https://github.com/kubernetes-sigs/cluster-api).
 
-Arguably, it may be easier to just use `apiserver-builder` directly. In any case,
-there is no intent to maintain these instructions. Better automation or more 
+There is no intent to maintain these instructions. Better automation or more
 sophisticated code sharing should be preferred over this duct tape and bubble gum.
 
 ¯\_(ツ)_/¯
@@ -40,7 +39,7 @@ rm -rf cluster-api-provider-skeleton.git
 ```
 mkdir -p $GOPATH/src/sigs.k8s.io/
 cd $GOPATH/src/sigs.k8s.io/
-git clone https://github.com/davidewatson/cluster-api-provider-ssh.git 
+git clone https://github.com/davidewatson/cluster-api-provider-ssh.git
 cd cluster-api-provider-ssh
 ```
 
@@ -52,11 +51,10 @@ find ./* -type f  -path ./vendor -prune -o -path ./.git -prune -o -exec sed -i '
 find ./* -type f  -path ./vendor -prune -o -path ./.git -prune -o -exec sed -i '' -e 's/Skeleton/SSH/g' {} \;
 ```
 
-The following directories must be renamed/moved:
+The following directory must be renamed/moved:
 
 ```
-git mv cloud/skeleton/ cloud/ssh/
-git mv clusterctl/examples/skeleton/ clusterctl/examples/ssh/
+git mv pkg/cloud/skeleton/ pkg/cloud/ssh/
 ```
 
 For other changes, like the README.md, OWNERS_ALIASES, etc., you'll have to
